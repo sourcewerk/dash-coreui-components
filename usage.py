@@ -12,6 +12,7 @@ app.css.config.serve_locally = True
 app.layout = html.Div([
     dash_coreui_components.appheader([
         dash_coreui_components.appsidebartoggler(className="d-lg-none", display="md", mobile=True),
+        dash_coreui_components.appnavbarbrand(),
         'TODO header'
     ], fixed=True),
     html.Div([

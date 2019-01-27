@@ -2,4 +2,5 @@ include dash_coreui_components/dash_coreui_components.min.js
 include dash_coreui_components/dash_coreui_components.dev.js
 include dash_coreui_components/metadata.json
 include dash_coreui_components/package.json
+include dash_coreui_components/style.css
 include README.md
