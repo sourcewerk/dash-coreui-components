@@ -16,6 +16,7 @@ app.layout = html.Div([
             full={'src': 'assets/logo.svg', 'width': 89, 'height': 25, 'alt': 'CoreUI Logo'},
             minimized={'src': 'assets/sygnet.svg', 'width': 30, 'height': 30, 'alt': 'CoreUI Logo'}
         ),
+        dash_coreui_components.appsidebartoggler(className="d-md-down-none", display="lg"),
         'TODO header'
     ], fixed=True),
     html.Div([
@@ -31,9 +32,9 @@ app.layout = html.Div([
                 html.Div(id='output')
             ], fluid=True)
         ], className='main'),
-        'aside'
+        'TODO aside'
     ], className='app-body'),
-    'footer'
+    'TODO footer'
 ], className='app')
 
 @app.callback(Output('output', 'children'), [Input('input', 'value')])
