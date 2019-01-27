@@ -4,6 +4,8 @@
 
 dash-coreui-components is a Dash component library.
 
+`assets/` contains demo assets for the demo app `usage.py`.
+
 Get started with:
 1. Install Dash and its dependencies: https://dash.plot.ly/installation
 2. Run `python usage.py`

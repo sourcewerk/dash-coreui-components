@@ -2,3 +2,4 @@
 dash>=0.34.0
 dash-html-components
 dash-bootstrap-components>=0.3.0
+python-dotenv
