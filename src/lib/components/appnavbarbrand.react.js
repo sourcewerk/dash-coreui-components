@@ -14,6 +14,11 @@ const propTypes = {
   children: PropTypes.node,
 
   /**
+   * The ID used to identify this component in Dash callbacks, defaults to `appnavbarbrand`.
+   */
+  id: PropTypes.string,
+
+  /**
    * The CSS class name, defaults to `navbar-brand`.
    */
   className: PropTypes.string,
@@ -35,6 +40,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  id: 'appnavbarbrand',
   tag: 'a'
 };
 
@@ -72,7 +78,7 @@ class appnavbarbrand extends Component {
   }
 
   render() {
-    const { className, children, tag: Tag, ...attributes } = this.props;
+    const { id, className, children, tag: Tag, ...attributes } = this.props;
     const classes = classNames(className, 'navbar-brand');
 
     const img = [];
@@ -93,7 +99,7 @@ class appnavbarbrand extends Component {
     }
 
     return (
-      <Tag {...attributes} className={classes}>
+      <Tag {...attributes} id={id} className={classes}>
         {children || img}
       </Tag>
     );

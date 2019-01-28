@@ -11,6 +11,11 @@ const propTypes = {
   children: PropTypes.node,
 
   /**
+   * The ID used to identify this component in Dash callbacks, defaults to `appsidebartoggler`.
+   */
+  id: PropTypes.string,
+
+  /**
    * The CSS class name, defaults to `navbar-toggler`.
    */
   className: PropTypes.string,
@@ -37,6 +42,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  id: 'appsidebartoggler',
   display: 'lg',
   mobile: false,
   tag: 'button',
@@ -67,7 +73,7 @@ class appsidebartoggler extends Component {
   }
 
   render() {
-    const { className, children, tag: Tag, ...attributes } = this.props;
+    const { id, className, children, tag: Tag, ...attributes } = this.props;
 
     delete attributes.mobile
     delete attributes.display
@@ -75,7 +81,7 @@ class appsidebartoggler extends Component {
     const classes = classNames(className, 'navbar-toggler');
 
     return (
-      <Tag type="button" className={classes} {...attributes} onClick={(event)=>this.sidebarToggle(event)} data-sidebar-toggler>
+      <Tag type="button" id={id} className={classes} {...attributes} onClick={(event)=>this.sidebarToggle(event)} data-sidebar-toggler>
         {children || <span className="navbar-toggler-icon" />}
       </Tag>
     );

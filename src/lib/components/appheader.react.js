@@ -9,6 +9,11 @@ const propTypes = {
   children: PropTypes.node,
 
   /**
+   * The ID used to identify this component in Dash callbacks, defaults to `appheader`.
+   */
+  id: PropTypes.string,
+
+  /**
    * The CSS class name.
    */
   className: PropTypes.string,
@@ -25,6 +30,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  id: 'appheader',
   tag: 'header',
   fixed: false
 };
@@ -46,14 +52,14 @@ class appheader extends Component {
   // }
 
   render() {
-    const { className, children, tag: Tag, ...attributes } = this.props;
+    const { id, className, children, tag: Tag, ...attributes } = this.props;
 
     delete attributes.fixed
 
     const classes = classNames(className, 'app-header', 'navbar');
 
     return (
-      <Tag className={classes} {...attributes}>
+      <Tag id={id} className={classes} {...attributes}>
         {children}
       </Tag>
     );

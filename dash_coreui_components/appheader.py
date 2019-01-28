@@ -9,16 +9,20 @@ CoreUI header component.
 
 Keyword arguments:
 - children (a list of or a singular dash component, string or number; optional): The children.
+- id (string; optional): The ID used to identify this component in Dash callbacks, defaults to `appheader`.
 - className (string; optional): The CSS class name.
 - fixed (boolean; optional): Wether the header is fixed, defaults to `false`.
-- tag (string; optional): The HTML tag, defaults to `header`."""
+- tag (string; optional): The HTML tag, defaults to `header`.
+
+Available events: """
     @_explicitize_args
-    def __init__(self, children=None, className=Component.UNDEFINED, fixed=Component.UNDEFINED, tag=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['children', 'className', 'fixed', 'tag']
+    def __init__(self, children=None, id=Component.UNDEFINED, className=Component.UNDEFINED, fixed=Component.UNDEFINED, tag=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['children', 'id', 'className', 'fixed', 'tag']
         self._type = 'appheader'
         self._namespace = 'dash_coreui_components'
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['children', 'className', 'fixed', 'tag']
+        self.available_events = []
+        self.available_properties = ['children', 'id', 'className', 'fixed', 'tag']
         self.available_wildcard_properties =            []
 
         _explicit_args = kwargs.pop('_explicit_args')
