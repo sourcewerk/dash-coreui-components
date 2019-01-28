@@ -6,7 +6,7 @@ dash-coreui-components is a Dash component library.
 
 `assets/` contains demo assets for the demo app `usage.py`.
 
-*IMPORTANT:* If you want to use CoreUI Icons in your app (namespace `@coreui/icons`, you'll need to have `assets/fonts/CoreUI-Icons-Linear-Free.*` and `assets/css/coreui-icons.min.css`.
+**IMPORTANT:** If you want to use CoreUI Icons in your app (namespace `@coreui/icons`, you'll need to have `assets/fonts/CoreUI-Icons-Linear-Free.*` and `assets/css/coreui-icons.min.css`.
 
 Get started with:
 1. Install Dash and its dependencies: https://dash.plot.ly/installation
