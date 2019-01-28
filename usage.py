@@ -15,8 +15,8 @@ app.layout = html.Div([
     duc.appheader([
         duc.appsidebartoggler(id='appsidebartogglerlg', className='d-lg-none', display='md', mobile=True),
         duc.appnavbarbrand(
-            full={'src': 'assets/images/logo.svg', 'width': 89, 'height': 25, 'alt': 'CoreUI Logo'},
-            minimized={'src': 'assets/images/sygnet.svg', 'width': 30, 'height': 30, 'alt': 'CoreUI Logo'}
+            full={'src': '/assets/images/logo.svg', 'width': 89, 'height': 25, 'alt': 'CoreUI Logo'},
+            minimized={'src': '/assets/images/sygnet.svg', 'width': 30, 'height': 30, 'alt': 'CoreUI Logo'}
         ),
         duc.appsidebartoggler(id='appsidebartogglermd', className='d-md-down-none', display='lg'),
         dbc.Nav([
