@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { sidebarCssClasses, validBreakpoints, checkBreakpoint } from './_shared/index';
+import { asideMenuCssClasses, validBreakpoints, checkBreakpoint } from './_shared/index';
 import toggleClasses from './_shared/toggle-classes';
 
 const propTypes = {
@@ -9,7 +9,7 @@ const propTypes = {
    * The children, defaults to  `<span className="navbar-toggler-icon" />`.
    */
   children: PropTypes.node,
-
+  
   /**
    * The ID used to identify this component in Dash callbacks, defaults to `appsidebartoggler`.
    */
@@ -19,6 +19,11 @@ const propTypes = {
    * The CSS class name, defaults to `navbar-toggler`.
    */
   className: PropTypes.string,
+
+  /*
+   * The default open flag, defaults to `false`.
+   */
+  defaultOpen: PropTypes.bool,
 
   /**
    * The display bootstrap class, defaults to `lg`.
@@ -42,7 +47,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-  id: 'appsidebartoggler',
+  id: 'appasidetoggler',
+  defaultOpen: false,
   display: 'lg',
   mobile: false,
   tag: 'button',
@@ -50,45 +56,58 @@ const defaultProps = {
 };
 
 /**
- * CoreUI sidebar toggler component.
+ * CoreUI aside toggler component.
  */
-class appsidebartoggler extends Component {
+class appasidetoggler extends Component {
   constructor(props) {
     super(props);
-    this.sidebarToggle = this.sidebarToggle.bind(this);
+    this.asideToggle = this.asideToggle.bind(this);
+
+    this.state = {};
   }
 
-  sidebarToggle(e) {
-    e.preventDefault();
-    this.toggle();
+  componentDidMount() {
+    this.toggle(this.props.defaultOpen)
   }
 
   toggle(force) {
-    const [display, mobile] = [this.props.display, this.props.mobile]
-    let cssClass = sidebarCssClasses[0]
+    const [display, mobile] = [this.props.display, this.props.mobile];
+    let cssClass = asideMenuCssClasses[0];
     if (!mobile && display && checkBreakpoint(display, validBreakpoints)) {
-      cssClass = `sidebar-${display}-show`
+      cssClass = `aside-menu-${display}-show`
     }
-    toggleClasses(cssClass, sidebarCssClasses, force)
+    toggleClasses(cssClass, asideMenuCssClasses, force)
+  }
+
+  asideToggle(e) {
+    e.preventDefault();
+    this.toggle()
   }
 
   render() {
-    const { id, className, children, tag: Tag, ...attributes } = this.props;
+    const { id, className, children, type, tag: Tag, ...attributes } = this.props;
 
-    delete attributes.mobile
-    delete attributes.display
+    delete attributes.defaultOpen;
+    delete attributes.display;
+    delete attributes.mobile;
 
     const classes = classNames(className, 'navbar-toggler');
 
     return (
-      <Tag type="button" id={id} className={classes} {...attributes} onClick={(event)=>this.sidebarToggle(event)} data-sidebar-toggler>
+      <Tag
+          type={type}
+          id={id}
+          className={classes}
+          {...attributes}
+          onClick={(event)=>this.asideToggle(event)}
+      >
         {children || <span className="navbar-toggler-icon" />}
       </Tag>
     );
   }
 }
 
-appsidebartoggler.propTypes = propTypes;
-appsidebartoggler.defaultProps = defaultProps;
+appasidetoggler.propTypes = propTypes;
+appasidetoggler.defaultProps = defaultProps;
 
-export default appsidebartoggler;
+export default appasidetoggler;
