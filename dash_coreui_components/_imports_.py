@@ -2,8 +2,7 @@ from .appasidetoggler import appasidetoggler
 from .appheader import appheader
 from .appheaderdropdown import appheaderdropdown
 from .appnavbarbrand import appnavbarbrand
-from .approuterpanel import approuterpanel
-from .approuterpanelroute import approuterpanelroute
+from .approuteconditional import approuteconditional
 from .appsidebar import appsidebar
 from .appsidebarfooter import appsidebarfooter
 from .appsidebarform import appsidebarform
@@ -18,8 +17,7 @@ __all__ = [
     "appheader",
     "appheaderdropdown",
     "appnavbarbrand",
-    "approuterpanel",
-    "approuterpanelroute",
+    "approuteconditional",
     "appsidebar",
     "appsidebarfooter",
     "appsidebarform",

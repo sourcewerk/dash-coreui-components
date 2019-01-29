@@ -418,7 +418,7 @@ class appsidebarnav extends Component {
             search: window.location.search,
           });
         } else {
-          this.forceUpdate();
+          this.forceUpdate(); // force render()
         }
       };
     };

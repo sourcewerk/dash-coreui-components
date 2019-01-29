@@ -97,10 +97,10 @@ app.layout = html.Div([
         html.Main([
             'TODO appbreadcrumb',
             #dbc.Container(id='page-content', fluid=True)
-            duc.approuterpanel([
-                duc.approuterpanelroute(dashboard_layout, route='/'),
-                duc.approuterpanelroute(other_animals_layout, route='/other/animals')
-            ], id='page-content', className='container-fluid')
+            dbc.Container([
+                duc.approuteconditional(dashboard_layout, route='/'),
+                duc.approuteconditional(other_animals_layout, route='/other/animals')
+            ], id='page-content', fluid=True)
         ], className='main'),
         'TODO aside'
     ], className='app-body'),
@@ -113,15 +113,9 @@ app.layout = html.Div([
 #def display_page(pathname):
 #    content = None
 #    if pathname in ['/', '/dashboard']:
-#        content = html.Div([
-#            html.H3('Dashboard'),
-#            duc.testcomponent(
-#                id='testcomponent-input',
-#                value='my-value',
-#                label='my-label'
-#            ),
-#            html.Div(id='testcomponent-output')
-#        ])
+#        content = dashboard_layout 
+#    elif pathname == '/other/animals':
+#        content = other_animals_layout
 #    else:
 #        content = html.Div([
 #            html.H3('You are on page {}'.format(pathname)),

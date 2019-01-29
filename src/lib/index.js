@@ -4,8 +4,7 @@ import appasidetoggler from './components/appasidetoggler.react';
 import appheader from './components/appheader.react';
 import appheaderdropdown from './components/appheaderdropdown.react';
 import appnavbarbrand from './components/appnavbarbrand.react';
-import approuterpanel from './components/approuterpanel.react';
-import approuterpanelroute from './components/approuterpanelroute.react';
+import approuteconditional from './components/approuteconditional.react';
 import appsidebar from './components/appsidebar.react';
 import appsidebarfooter from './components/appsidebarfooter.react';
 import appsidebarform from './components/appsidebarform.react';
@@ -20,8 +19,7 @@ export {
   appheader,
   appheaderdropdown,
   appnavbarbrand,
-  approuterpanel,
-  approuterpanelroute,
+  approuteconditional,
   appsidebar,
   appsidebarfooter,
   appsidebarform,
