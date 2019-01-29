@@ -11,6 +11,21 @@ app.scripts.config.serve_locally = True
 app.css.config.serve_locally = True
 app.config.suppress_callback_exceptions = True # needed for simple multi-page apps, see https://dash.plot.ly/urls
 
+dashboard_layout = html.Div([
+    html.H3('Dashboard'),
+    duc.testcomponent(
+        id='testcomponent-input',
+        value='my-value',
+        label='my-label'
+    ),
+    html.Div(id='testcomponent-output')
+])
+
+other_animals_layout = html.Div([
+    html.H3('Other Animals'),
+    html.P('You are on the page for other animals. Nothing to see here...')
+])
+
 app.layout = html.Div([
     duc.appheader([
         duc.appsidebartoggler(id='appsidebartogglerlg', className='d-lg-none', display='md', mobile=True),
@@ -50,7 +65,7 @@ app.layout = html.Div([
                 'items': [
                     {
                         'name': 'Dashboard',
-                        'url': '/dashboard',
+                        'url': '/',
                         'icon': 'cui-speedometer icons',
                         'badge': {'variant': 'info', 'text': 'NEW'}
                     },
@@ -81,7 +96,11 @@ app.layout = html.Div([
         ], fixed=True, display='lg'),
         html.Main([
             'TODO appbreadcrumb',
-            dbc.Container(id='page-content', fluid=True)
+            #dbc.Container(id='page-content', fluid=True)
+            duc.approuterpanel([
+                duc.approuterpanelroute(dashboard_layout, route='/'),
+                duc.approuterpanelroute(other_animals_layout, route='/other/animals')
+            ], id='page-content', className='container-fluid')
         ], className='main'),
         'TODO aside'
     ], className='app-body'),
@@ -89,26 +108,26 @@ app.layout = html.Div([
 ], className='app')
 
 
-@app.callback(dash.dependencies.Output('page-content', 'children'),
-              [dash.dependencies.Input('current-url', 'pathname')])
-def display_page(pathname):
-    content = None
-    if pathname in ['/', '/dashboard']:
-        content = html.Div([
-            html.H3('Dashboard'),
-            duc.testcomponent(
-                id='testcomponent-input',
-                value='my-value',
-                label='my-label'
-            ),
-            html.Div(id='testcomponent-output')
-        ])
-    else:
-        content = html.Div([
-            html.H3('You are on page {}'.format(pathname)),
-            html.P('nothing to see here...')
-        ])
-    return content
+#@app.callback(dash.dependencies.Output('page-content', 'children'),
+#              [dash.dependencies.Input('current-url', 'pathname')])
+#def display_page(pathname):
+#    content = None
+#    if pathname in ['/', '/dashboard']:
+#        content = html.Div([
+#            html.H3('Dashboard'),
+#            duc.testcomponent(
+#                id='testcomponent-input',
+#                value='my-value',
+#                label='my-label'
+#            ),
+#            html.Div(id='testcomponent-output')
+#        ])
+#    else:
+#        content = html.Div([
+#            html.H3('You are on page {}'.format(pathname)),
+#            html.P('nothing to see here...')
+#        ])
+#    return content
 
 @app.callback(Output('testcomponent-output', 'children'),
               [Input('testcomponent-input', 'value')])

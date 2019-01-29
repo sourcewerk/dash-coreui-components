@@ -278,7 +278,7 @@ class appsidebarnav extends Component {
     e.currentTarget.parentElement.classList.toggle('open');
   }
 
-  activeRoute(routeName, props, activeClasses, notActiveClasses) {
+  activeRoute(routeName, activeClasses, notActiveClasses) {
     const {pathname} = this.props;
     return pathname == routeName // TODO this does not match if suffixes to the path are present
       ? activeClasses : notActiveClasses;
@@ -344,7 +344,7 @@ class appsidebarnav extends Component {
   navDropdown(item, key) {
     const classIcon = classNames('nav-icon', item.icon);
     return (
-      <li key={key} className={this.activeRoute(item.url, this.props, 'nav-item nav-dropdown open', 'nav-item nav-dropdown')}>
+      <li key={key} className={this.activeRoute(item.url, 'nav-item nav-dropdown open', 'nav-item nav-dropdown')}>
         <a className="nav-link nav-dropdown-toggle" href="#" onClick={this.dropdownClick}><i className={classIcon} />{item.name}{this.navBadge(item.badge)}</a>
         <ul className="nav-dropdown-items">
           {this.navList(item.children)}
@@ -370,7 +370,7 @@ class appsidebarnav extends Component {
     const itemIcon = <i className={classes.icon} />
     const itemBadge = this.navBadge(item.badge)
     const attributes = item.attributes || {}
-    const className = classes.link + this.activeRoute(item.url, this.props, ' active', '');
+    const className = classes.link + this.activeRoute(item.url, ' active', '');
     return (
       <NavItem key={key} className={classes.item}>
         { attributes.disabled ?
@@ -417,11 +417,13 @@ class appsidebarnav extends Component {
             hash: window.location.hash,
             search: window.location.search,
           });
+        } else {
+          this.forceUpdate();
         }
       };
     };
     window.addEventListener('onpopstate', listener());
-    window.onpopstate = listener('POP'); // TODO how is 'POP' a parameter to listener()?
+    //window.onpopstate = listener('POP'); // TODO how is 'POP' a parameter to listener()?
 
     // non-standard, emitted by Link.react
     window.addEventListener('onpushstate', listener());
@@ -433,7 +435,14 @@ class appsidebarnav extends Component {
   }
 
   render() {
-    const { id, className, children, navConfig, ...attributes } = this.props;
+    const { id, className, children, setProps, navConfig, ...attributes } = this.props;
+
+    if (!setProps) {
+      this.props.pathname = window.location.pathname;
+      this.props.href = window.location.href;
+      this.props.hash = window.location.hash;
+      this.props.search = window.location.search;
+    }
 
     delete attributes.isOpen
     delete attributes.staticContext
