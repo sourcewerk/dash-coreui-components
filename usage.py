@@ -26,6 +26,8 @@ other_animals_layout = html.Div([
     html.P('You are on the page for other animals. Nothing to see here...')
 ])
 
+app.title = 'Dash CoreUI Components Demo'
+
 app.layout = html.Div([
     duc.appheader([
         duc.appsidebartoggler(id='appsidebartogglerlg', className='d-lg-none', display='md', mobile=True),
@@ -102,7 +104,7 @@ app.layout = html.Div([
                 duc.approuteconditional(other_animals_layout, route='/other/animals')
             ], id='page-content', fluid=True)
         ], className='main'),
-        'TODO aside'
+        duc.appaside('Aside')
     ], className='app-body'),
     'TODO footer'
 ], className='app')

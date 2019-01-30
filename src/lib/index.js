@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import testcomponent from './components/testcomponent.react';
+import appaside from './components/appaside.react';
 import appasidetoggler from './components/appasidetoggler.react';
 import appheader from './components/appheader.react';
 import appheaderdropdown from './components/appheaderdropdown.react';
@@ -15,6 +16,7 @@ import appsidebartoggler from './components/appsidebartoggler.react';
 
 export {
   testcomponent,
+  appaside,
   appasidetoggler,
   appheader,
   appheaderdropdown,

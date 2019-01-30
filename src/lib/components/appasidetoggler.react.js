@@ -20,7 +20,7 @@ const propTypes = {
    */
   className: PropTypes.string,
 
-  /*
+  /**
    * The default open flag, defaults to `false`.
    */
   defaultOpen: PropTypes.bool,

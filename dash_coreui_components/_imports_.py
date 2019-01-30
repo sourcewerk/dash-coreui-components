@@ -1,3 +1,4 @@
+from .appaside import appaside
 from .appasidetoggler import appasidetoggler
 from .appheader import appheader
 from .appheaderdropdown import appheaderdropdown
@@ -13,6 +14,7 @@ from .appsidebartoggler import appsidebartoggler
 from .testcomponent import testcomponent
 
 __all__ = [
+    "appaside",
     "appasidetoggler",
     "appheader",
     "appheaderdropdown",
