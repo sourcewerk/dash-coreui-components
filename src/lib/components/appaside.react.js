@@ -47,6 +47,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  id: 'appaside',
   tag: 'aside',
   display: '',
   fixed: false,
@@ -85,7 +86,7 @@ class appaside extends Component {
   }
 
   render() {
-    const { className, children, tag: Tag, ...attributes } = this.props;
+    const { className, id, children, tag: Tag, ...attributes } = this.props;
 
     delete attributes.display
     delete attributes.fixed
@@ -95,7 +96,7 @@ class appaside extends Component {
     const classes = classNames(className, 'aside-menu');
 
     return (
-      <Tag {...attributes} className={classes}>
+      <Tag {...attributes} id={id} className={classes}>
         {children}
       </Tag>
     );
