@@ -55,6 +55,9 @@ const defaultProps = {
   offCanvas: true
 };
 
+/**
+ * CoreUI aside component.
+ */
 class appaside extends Component {
   constructor(props) {
     super(props);
