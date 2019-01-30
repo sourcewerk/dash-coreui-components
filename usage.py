@@ -106,7 +106,10 @@ app.layout = html.Div([
         ], className='main'),
         duc.appaside('Aside')
     ], className='app-body'),
-    'TODO footer'
+    duc.appfooter([
+        html.Span('Dash CoreUI Components © 2019 sourcewerk GmbH'),
+        html.Span(['Powered by ', html.A('CoreUI for React', href='https://coreui.io/react')], className='ml-auto')
+    ])
 ], className='app')
 
 
