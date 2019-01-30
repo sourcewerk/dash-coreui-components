@@ -5,7 +5,7 @@ from dash.development.base_component import Component, _explicitize_args
 
 class appaside(Component):
     """A appaside component.
-
+CoreUI aside component.
 
 Keyword arguments:
 - children (a list of or a singular dash component, string or number; optional): The children.
