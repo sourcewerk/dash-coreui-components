@@ -95,7 +95,7 @@ class appbreadcrumb extends Component {
     const itemAppRouteName = appRoutes.find(route => route.path === item);  
     const itemName = itemAppRouteName ? itemAppRouteName.name : itemPathLastElementUppercase;
 
-    if (item === currentPathname) {
+    if (item === currentPathname || (itemPath.length > 1 && itemPath[1] != '')) { // do not allow links to 'intermediate' pages to be compatible with appsidebarnav
       return <BreadcrumbItem active>{itemName}</BreadcrumbItem>
     } else {
       return (
