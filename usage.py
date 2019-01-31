@@ -31,7 +31,7 @@ charts_layout = html.Div([
     dbc.Card([
         dbc.CardHeader('Random Walk'),
         dbc.CardBody([
-            dcc.Graph(id='charts-graph-output')
+            dcc.Graph(id='charts-graph-output', style={'width': '100%'})
         ])
     ])
 ])
