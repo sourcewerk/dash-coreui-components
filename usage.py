@@ -1,6 +1,7 @@
-import dash_coreui_components as duc
 import dash
 from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_coreui_components as duc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
@@ -13,17 +14,20 @@ app.config.suppress_callback_exceptions = True # needed for simple multi-page ap
 
 dashboard_layout = html.Div([
     html.H3('Dashboard'),
-    duc.testcomponent(
-        id='testcomponent-input',
-        value='my-value',
-        label='my-label'
+    dcc.Textarea(
+        id='dashboard-test-textarea',
+        placeholder='Enter a value...',
+        value='Hello, world!',
+        rows=20,
+        style={'width': '100%', 'height': 'auto'}
     ),
-    html.Div(id='testcomponent-output')
+    html.Div(id='dashboard-test-output')
 ])
 
 other_animals_layout = html.Div([
     html.H3('Other Animals'),
-    html.P('You are on the page for other animals. Nothing to see here...')
+    html.P('You are on the page for other animals.'),
+    html.Div(id='other-animals-test-output')
 ])
 
 app.title = 'Dash CoreUI Components Demo'
@@ -89,7 +93,7 @@ app.layout = html.Div([
                         'name': 'Disabled',
                         'url': '/',
                         'icon': 'cui-ban icons',
-                        'attributes': { 'disabled': True },
+                        'attributes': {'disabled': True},
                     }
                 ]
             }),
@@ -104,7 +108,35 @@ app.layout = html.Div([
                 duc.approuteconditional(other_animals_layout, route='/other/animals')
             ], id='page-content', fluid=True)
         ], className='main'),
-        duc.appaside('Aside', fixed=True)
+        duc.appaside([
+            duc.approuteconditional(route='/', children=dbc.Form([
+                html.H6('Dashboard Settings'),
+                dbc.FormGroup([
+                    dbc.Label('Aside Dropdown', html_for='dashboard-aside-dropdown'),
+                    dcc.Dropdown(
+                        id='dashboard-aside-dropdown',
+                        options=[{'label': 'Option 1', 'value': 1}, {'label': 'Option 2', 'value': 2}],
+                    ),
+                ]),
+                dbc.FormGroup([
+                    dbc.Label('Aside Slider', html_for='dashboard-aside-slider'),
+                    dcc.Slider(id='dashboard-aside-slider', min=0, max=10, step=0.5, value=3),
+                ])
+            ], className='tab-pane p-3')),
+            duc.approuteconditional(route='/other/animals', children=dbc.Form([
+                html.H6('Other Animals Settings'),
+                dbc.FormGroup([
+                    dbc.Label('Aside Input', html_for='other-animals-aside-input'),
+                    dcc.Input(
+                        id='other-animals-aside-input',
+                        type='text',
+                        value='',
+                        style={'width': '100%'},
+                        placeholder='Enter a value'
+                    ),
+                ])
+            ], className='tab-pane p-3'))
+        ], fixed=True)
     ], className='app-body'),
     duc.appfooter([
         html.Span('Dash CoreUI Components © 2019 sourcewerk GmbH'),
@@ -128,10 +160,18 @@ app.layout = html.Div([
 #        ])
 #    return content
 
-@app.callback(Output('testcomponent-output', 'children'),
-              [Input('testcomponent-input', 'value')])
-def display_output(value):
-    return 'You have entered {}'.format(value)
+@app.callback(Output('dashboard-test-output', 'children'),
+              [Input('dashboard-test-textarea', 'value'),
+               Input('dashboard-aside-dropdown', 'value'),
+               Input('dashboard-aside-slider', 'value')])
+def dashboard_display_output(dashboard_test_textarea_value, dashboard_aside_dropdown_value, dashboard_aside_slider_value):
+    return f'You have entered "{dashboard_test_textarea_value}". You selected {dashboard_aside_dropdown_value} in the aside dropdown and the aside slider sits at {dashboard_aside_slider_value}.'
+
+@app.callback(Output('other-animals-test-output', 'children'),
+              [Input('dashboard-test-textarea', 'value'),
+               Input('other-animals-aside-input', 'value')])
+def other_animals_display_output(dashboard_test_textarea_value, other_animals_aside_input_value):
+    return f'You have entered "{dashboard_test_textarea_value}" on the Dashboard and "{other_animals_aside_input_value}" in the aside settings.'
 
 
 if __name__ == '__main__':

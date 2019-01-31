@@ -13,7 +13,6 @@ from .appsidebarheader import appsidebarheader
 from .appsidebarminimizer import appsidebarminimizer
 from .appsidebarnav import appsidebarnav
 from .appsidebartoggler import appsidebartoggler
-from .testcomponent import testcomponent
 
 __all__ = [
     "appaside",
@@ -30,6 +29,5 @@ __all__ = [
     "appsidebarheader",
     "appsidebarminimizer",
     "appsidebarnav",
-    "appsidebartoggler",
-    "testcomponent"
+    "appsidebartoggler"
 ]
