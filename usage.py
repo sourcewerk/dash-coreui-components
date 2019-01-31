@@ -104,7 +104,7 @@ app.layout = html.Div([
                 duc.approuteconditional(other_animals_layout, route='/other/animals')
             ], id='page-content', fluid=True)
         ], className='main'),
-        duc.appaside('Aside')
+        duc.appaside('Aside', fixed=True)
     ], className='app-body'),
     duc.appfooter([
         html.Span('Dash CoreUI Components © 2019 sourcewerk GmbH'),
