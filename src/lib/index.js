@@ -2,6 +2,7 @@
 import testcomponent from './components/testcomponent.react';
 import appaside from './components/appaside.react';
 import appasidetoggler from './components/appasidetoggler.react';
+import appbreadcrumb from './components/appbreadcrumb.react';
 import appfooter from './components/appfooter.react';
 import appheader from './components/appheader.react';
 import appheaderdropdown from './components/appheaderdropdown.react';
@@ -19,6 +20,7 @@ export {
   testcomponent,
   appaside,
   appasidetoggler,
+  appbreadcrumb,
   appfooter,
   appheader,
   appheaderdropdown,

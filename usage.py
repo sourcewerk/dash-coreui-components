@@ -97,7 +97,7 @@ app.layout = html.Div([
             duc.appsidebarminimizer()
         ], fixed=True, display='lg'),
         html.Main([
-            'TODO appbreadcrumb',
+            duc.appbreadcrumb(),
             #dbc.Container(id='page-content', fluid=True)
             dbc.Container([
                 duc.approuteconditional(dashboard_layout, route='/'),

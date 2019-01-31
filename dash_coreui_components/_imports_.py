@@ -1,5 +1,6 @@
 from .appaside import appaside
 from .appasidetoggler import appasidetoggler
+from .appbreadcrumb import appbreadcrumb
 from .appfooter import appfooter
 from .appheader import appheader
 from .appheaderdropdown import appheaderdropdown
@@ -17,6 +18,7 @@ from .testcomponent import testcomponent
 __all__ = [
     "appaside",
     "appasidetoggler",
+    "appbreadcrumb",
     "appfooter",
     "appheader",
     "appheaderdropdown",
