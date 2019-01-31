@@ -16,14 +16,19 @@ app.config.suppress_callback_exceptions = True # needed for simple multi-page ap
 
 dashboard_layout = html.Div([
     html.H3('Dashboard'),
-    dcc.Textarea(
-        id='dashboard-test-textarea',
-        placeholder='Enter a value...',
-        value='Hello, world!',
-        rows=20,
-        style={'width': '100%', 'height': 'auto'}
-    ),
-    html.Div(id='dashboard-test-output')
+    dbc.Card([
+        dbc.CardHeader('Text Area'),
+        dbc.CardBody([
+            dcc.Textarea(
+                id='dashboard-test-textarea',
+                placeholder='Enter a value...',
+                value='Hello, world!',
+                rows=20,
+                style={'width': '100%', 'height': 'auto'}
+            ),
+            html.Div(id='dashboard-test-output')
+        ])
+    ])
 ])
 
 charts_layout = html.Div([
@@ -32,7 +37,7 @@ charts_layout = html.Div([
         dbc.CardHeader('Random Walk'),
         dbc.CardBody([
             dcc.Graph(id='charts-graph-output', style={'width': '100%'})
-        ])
+        ], className='p-0')
     ])
 ])
 
