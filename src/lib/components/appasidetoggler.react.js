@@ -82,6 +82,8 @@ class appasidetoggler extends Component {
   asideToggle(e) {
     e.preventDefault();
     this.toggle()
+    // TODO HACK: Create a synthetic window resize event to cause Plotly graphs to re-render after the transition finishes.
+    window.setTimeout(() => window.dispatchEvent(new Event('resize')), 150);
   }
 
   render() {

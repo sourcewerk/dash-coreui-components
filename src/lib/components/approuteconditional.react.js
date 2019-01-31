@@ -49,6 +49,8 @@ class approuteconditional extends Component {
     const listener = () => {
       return () => {
         this.forceUpdate(); // force render()
+        // TODO HACK: Create a synthetic window resize event to cause Plotly graphs to re-render.
+        window.dispatchEvent(new Event('resize'));
       };
     };
     window.addEventListener('onpopstate', listener());
