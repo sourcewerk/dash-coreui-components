@@ -4,6 +4,8 @@ import dash_core_components as dcc
 import dash_coreui_components as duc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+import plotly.graph_objs as go
+import numpy as np
 
 
 app = dash.Dash(__name__)
@@ -22,6 +24,16 @@ dashboard_layout = html.Div([
         style={'width': '100%', 'height': 'auto'}
     ),
     html.Div(id='dashboard-test-output')
+])
+
+charts_layout = html.Div([
+    html.H3('Charts'),
+    dbc.Card([
+        dbc.CardHeader('Random Walk'),
+        dbc.CardBody([
+            dcc.Graph(id='charts-graph-output')
+        ])
+    ])
 ])
 
 other_animals_layout = html.Div([
@@ -76,6 +88,11 @@ app.layout = html.Div([
                         'badge': {'variant': 'info', 'text': 'NEW'}
                     },
                     {
+                        'name': 'Charts',
+                        'url': '/charts',
+                        'icon': 'cui-chart icons'
+                    },
+                    {
                         'name': 'Other',
                         'url': '/other',
                         'icon': 'cui-star icons',
@@ -104,8 +121,9 @@ app.layout = html.Div([
             duc.appbreadcrumb(appRoutes=[{'path': '/', 'name': 'Dashboard'}]),
             #dbc.Container(id='page-content', fluid=True)
             dbc.Container([
-                duc.approuteconditional(dashboard_layout, route='/'),
-                duc.approuteconditional(other_animals_layout, route='/other/animals')
+                duc.approuteconditional(route='/', children=dashboard_layout),
+                duc.approuteconditional(route='/charts', children=charts_layout),
+                duc.approuteconditional(route='/other/animals', children=other_animals_layout)
             ], id='page-content', fluid=True)
         ], className='main'),
         duc.appaside([
@@ -121,6 +139,13 @@ app.layout = html.Div([
                 dbc.FormGroup([
                     dbc.Label('Aside Slider', html_for='dashboard-aside-slider'),
                     dcc.Slider(id='dashboard-aside-slider', min=0, max=10, step=0.5, value=3),
+                ])
+            ], className='tab-pane p-3')),
+            duc.approuteconditional(route='/charts', children=dbc.Form([
+                html.H6('Charts Settings'),
+                dbc.FormGroup([
+                    dbc.Label('Random Walk SD', html_for='charts-aside-random-walk-sd-slider'),
+                    dcc.Slider(id='charts-aside-random-walk-sd-slider', min=0, max=6, step=0.1, value=1),
                 ])
             ], className='tab-pane p-3')),
             duc.approuteconditional(route='/other/animals', children=dbc.Form([
@@ -164,13 +189,21 @@ app.layout = html.Div([
               [Input('dashboard-test-textarea', 'value'),
                Input('dashboard-aside-dropdown', 'value'),
                Input('dashboard-aside-slider', 'value')])
-def dashboard_display_output(dashboard_test_textarea_value, dashboard_aside_dropdown_value, dashboard_aside_slider_value):
+def dashboard_test_output(dashboard_test_textarea_value, dashboard_aside_dropdown_value, dashboard_aside_slider_value):
     return f'You have entered "{dashboard_test_textarea_value}". You selected {dashboard_aside_dropdown_value} in the aside dropdown and the aside slider sits at {dashboard_aside_slider_value}.'
+
+@app.callback(Output('charts-graph-output', 'figure'),
+              [Input('charts-aside-random-walk-sd-slider', 'value')])
+def charts_graph_output(charts_aside_random_walk_sd_slider):
+    N = 1000
+    x = np.linspace(0, 1, N)
+    y = np.cumsum(np.square(charts_aside_random_walk_sd_slider) * np.random.randn(N))
+    return { 'data': [go.Scatter(x=x, y=y)]} 
 
 @app.callback(Output('other-animals-test-output', 'children'),
               [Input('dashboard-test-textarea', 'value'),
                Input('other-animals-aside-input', 'value')])
-def other_animals_display_output(dashboard_test_textarea_value, other_animals_aside_input_value):
+def other_animals_test_output(dashboard_test_textarea_value, other_animals_aside_input_value):
     return f'You have entered "{dashboard_test_textarea_value}" on the Dashboard and "{other_animals_aside_input_value}" in the aside settings.'
 
 
