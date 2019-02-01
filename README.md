@@ -30,6 +30,9 @@ Please see https://github.com/plotly/dash-component-boilerplate for information 
 Run `make_python_dist.sh` to create a Python package tarball.
 This distribution tarball will get generated in the `dist/` folder.
 
+Test your tarball by copying it into a new environment and installing it locally.
+If it works, you can publish on PyPI via `twine upload dist/*` and on NPM via `npm publish`.
+
 
 # Acknowledgements
 
