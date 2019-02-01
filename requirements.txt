@@ -1,5 +1,8 @@
 # dash is required to call `build:py`
 dash>=0.34.0
 dash-html-components
+dash-core-components>=0.43.0
 dash-bootstrap-components>=0.3.0
+plotly>=3.5.0
+numpy>=1.16.0
 python-dotenv
