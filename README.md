@@ -12,7 +12,7 @@ dash-coreui-components is a Dash component library.
 
 Get started with:
 1. Install Dash and its dependencies: https://dash.plot.ly/installation
-2. Run `./build_and_run.sh`. This will build the project in dev mode ans runs the example in `usage.py`.
+2. Run `./build_and_run_usage_py.sh`. This will build the project in dev mode ans runs the example in `usage.py`.
 3. Visit http://localhost:8050 in your web browser
 
 The example in `usage.py` shows how to wire-up dash-coreui-components to a typical multi-page dashboard app.
