@@ -2,6 +2,8 @@
 
 [CoreUI](https://coreui.io) components for Plotly Dash.
 
+![](demo.gif)
+
 dash-coreui-components is a Dash component library.
 
 `assets/` contains demo assets for the demo app `usage.py`.
