@@ -25,6 +25,12 @@ Pull requests are welcome.
 Please see https://github.com/plotly/dash-component-boilerplate for information on the architecture of Dash components.
 
 
+## Creating and Publishing Production Builds
+
+Run `make_python_dist.sh` to create a Python package tarball.
+This distribution tarball will get generated in the `dist/` folder.
+
+
 # Acknowledgements
 
 * [Plotly Dash](https://plot.ly/products/dash/)
