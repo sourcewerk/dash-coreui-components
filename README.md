@@ -25,6 +25,15 @@ Pull requests are welcome.
 Please see https://github.com/plotly/dash-component-boilerplate for information on the architecture of Dash components.
 
 
+## Testing
+
+dash-coreui-components comes with integration tests in the `tests/` folder.
+Install the test requirements with `pip install -r tests/requirements.txt`.
+
+To run the tests, use `pytest --driver Chrome tests/` or simply `test_usage_py.sh`.
+Other drivers (IE, Firefox) can also be used.
+
+
 ## Creating and Publishing Production Builds
 
 Run `make_python_dist.sh` to create a Python package tarball.
